@@ -35,7 +35,7 @@ todoWrapper.addEventListener("click", function (e) {
       "contenteditable",
       ""
     );
-    e.target.parentNode.parentNode.children[0].textContent = "";
+    // e.target.parentNode.parentNode.children[0].textContent = "";
     e.target.parentNode.parentNode.children[0].focus();
     e.target.parentNode.parentNode.children[0].addEventListener(
       "blur",
