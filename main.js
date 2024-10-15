@@ -22,13 +22,21 @@ todoWrapper.addEventListener("click", function (e) {
   if (e.target.classList.contains("remove")) {
     e.target.parentNode.parentNode.remove();
   }
-  
-  if(e.target.parentNode.parentNode.children[0].classList.contains("cut")){
-    e.target.parentNode.parentNode.children[0].classList.remove("cut")
-   
+
+  if (e.target.parentNode.parentNode.children[0].classList.contains("cut")) {
+    e.target.parentNode.parentNode.children[0].classList.remove("cut");
   }
+
   if (e.target.classList.contains("done")) {
-    e.target.parentNode.parentNode.children[0].classList.add("cut");
+    if (
+      e.target.parentNode.parentNode.children[0].style.textDecoration ==
+      "line-through"
+    ) {
+      e.target.parentNode.parentNode.children[0].style.textDecoration = "none";
+    } else {
+      e.target.parentNode.parentNode.children[0].style.textDecoration =
+        "line-through";
+    }
   }
   if (e.target.classList.contains("edit")) {
     e.target.parentNode.parentNode.children[0].setAttribute(
