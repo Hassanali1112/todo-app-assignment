@@ -2,6 +2,8 @@ const inputElem = document.querySelector(".inputElem");
 const form = document.querySelector(".new-todo");
 const todoWrapper = document.querySelector(".todo-wrapper");
 const todoItem = document.querySelectorAll(".item");
+const searchItems = document.querySelector(".search-container input");
+const search = document.querySelector("#search");
 form.addEventListener("submit", function (e) {
   e.preventDefault();
   let newTodo = document.createElement("li");
@@ -55,4 +57,19 @@ todoWrapper.addEventListener("click", function (e) {
       }
     );
   }
+});
+function filteredTodos(enteredText) {
+
+  for(let i = 0; i <todoWrapper.children.length; i++){
+      if(!todoWrapper.children[i].firstElementChild.textContent.toLowerCase().includes(enteredText)){
+        todoWrapper.children[i].classList.add("filterItem");
+      } else{
+         todoWrapper.children[i].classList.remove("filterItem");
+      }
+  }
+}
+searchItems.addEventListener("keyup", function (e) {
+  e.preventDefault();
+  const enteredText = e.target.value;
+  filteredTodos(enteredText);
 });
