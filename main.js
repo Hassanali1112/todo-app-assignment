@@ -6,28 +6,32 @@ const searchItems = document.querySelector(".search-container input");
 const search = document.querySelector("#search");
 form.addEventListener("submit", function (e) {
   e.preventDefault();
-  let newTodo = document.createElement("li");
-  newTodo.classList.add("item");
-  todoContext = `<div class="text">${inputElem.value}</div>
+  if(inputElem.value){
+    
+    let newTodo = document.createElement("li");
+    newTodo.classList.add("item");
+    todoContext = `<div class="text">${inputElem.value}</div>
             <div class="btns">
               <button class="edit">Edit</button>
               <button class="remove">Delete</button>
               <button class="done">Done</button>
             </div>`;
-  newTodo.innerHTML = todoContext;
-  todoWrapper.appendChild(newTodo);
-  console.log(todoWrapper);
+    newTodo.innerHTML = todoContext;
+    todoWrapper.appendChild(newTodo);
+    console.log(todoWrapper);
 
-  inputElem.value = "";
+    inputElem.value = "";
+  }
+  
 });
 todoWrapper.addEventListener("click", function (e) {
   if (e.target.classList.contains("remove")) {
     e.target.parentNode.parentNode.remove();
   }
 
-  if (e.target.parentNode.parentNode.children[0].classList.contains("cut")) {
-    e.target.parentNode.parentNode.children[0].classList.remove("cut");
-  }
+  // if (e.target.parentNode.parentNode.children[0].classList.contains("cut")) {
+  //   e.target.parentNode.parentNode.children[0].classList.remove("cut");
+  // }
 
   if (e.target.classList.contains("done")) {
     if (
@@ -41,21 +45,31 @@ todoWrapper.addEventListener("click", function (e) {
     }
   }
   if (e.target.classList.contains("edit")) {
-    e.target.parentNode.parentNode.children[0].setAttribute(
-      "contenteditable",
-      ""
-    );
-    // e.target.parentNode.parentNode.children[0].textContent = "";
-    e.target.parentNode.parentNode.children[0].focus();
-    e.target.parentNode.parentNode.children[0].addEventListener(
-      "blur",
-      function (e) {
-        e.target.parentNode.parentNode.children[0].removeAttribute(
-          "contenteditable"
-        );
-        e.target.parentNode.parentNode.children[0].textContent;
-      }
-    );
+    let editText = e.target.parentElement.previousElementSibling.textContent.trim();
+    // console.log(todoWrapper.children.length)
+    debugger;
+    let valueToUpdate;
+    for(let i =0; i < todoWrapper.children.length; i++){
+    valueToUpdate = todoWrapper.children[i].firstElementChild.textContent;
+    if(valueToUpdate.trim() == inputElem.value.trim()){
+      console.log(i)
+    }
+    }
+    // e.target.parentNode.parentNode.children[0].setAttribute(
+    //   "contenteditable","");
+    //   inputElem.textContent = e.target.parentElement.parentElement[0];
+    //   console.log(inputElem.textContent)
+    // // e.target.parentNode.parentNode.children[0].textContent = "";
+    // e.target.parentNode.parentNode.children[0].focus();
+    // e.target.parentNode.parentNode.children[0].addEventListener(
+    //   "blur",
+    //   function (e) {
+    //     e.target.parentNode.parentNode.children[0].removeAttribute(
+    //       "contenteditable"
+    //     );
+    //     e.target.parentNode.parentNode.children[0].textContent;
+    //   }
+    // );
   }
 });
 function filteredTodos(enteredText) {
