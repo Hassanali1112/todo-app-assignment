@@ -13,6 +13,7 @@ form.addEventListener("submit", function (e) {
         todoWrapper.children[i].firstElementChild.textContent = inputElem.value;
       }
     }
+    index = null;
   } else {
     if (inputElem.value) {
       let newTodo = document.createElement("li");

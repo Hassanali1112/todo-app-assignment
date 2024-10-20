@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  
 }
 .cut{
   text-decoration: line-through;
@@ -12,18 +13,8 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.todo-container{
-  min-width: 90%;
-  min-height: auto;
-  padding: 20px;
-  border: 1px solid black;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #bacea6;
+  background-color: #243648 !important;
+ 
 }
 .inner{
   border: 1px solid black;
@@ -33,6 +24,7 @@ body{
   padding: 20px;
   max-height: 90%;
   border-radius: 20px;
+  background-color: #3A6D8C !important;
   box-shadow: 3px 6px 1px #353c5585;
 
 }
@@ -70,7 +62,7 @@ body{
   border-radius: 5px;
   align-items: center;
   text-transform: capitalize;
-  background: rgba(196, 175, 175, 0.5) ;
+  background: #6A9AB0 ;
 }
 .text{
   width: fit-content;
@@ -98,6 +90,24 @@ body{
   display: flex;
   justify-content: center;
 }
+.search-container input{
+  padding: 5px;
+  font-size: .8rem;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.502);
+  width: 200px;
+}
 .filterItem{
   display: none;
+}
+@media screen and (max-width : 345px) {
+  .text{
+    font-size: .9rem;
+  }
+.edit,
+  .remove,
+  .done {
+    font-size: .7rem;
+  }
+  
 }
