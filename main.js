@@ -4,15 +4,16 @@ const todoWrapper = document.querySelector(".todo-wrapper");
 const todoItem = document.querySelectorAll(".item");
 const searchItems = document.querySelector(".search-container input");
 const search = document.querySelector("#search");
-let index;
+let index = null;
 form.addEventListener("submit", function (e) {
   e.preventDefault();
-  if (index === 0 || index) {
-    for (let i = 0; i < todoWrapper.children.length; i++) {
-      if (index == i) {
-        todoWrapper.children[i].firstElementChild.textContent = inputElem.value;
-      }
-    }
+  if (index !== null) {
+    // for (let i = 0; i < todoWrapper.children.length; i++) {
+    //   if (index == i) {
+    //     todoWrapper.children[i].firstElementChild.textContent = inputElem.value;
+    //   }
+    // }
+    todoWrapper.children[index].firstElementChild.textContent = inputElem.value;
     index = null;
   } else {
     if (inputElem.value) {
@@ -44,18 +45,15 @@ todoWrapper.addEventListener("click", function (e) {
     }
   }
   if (e.target.classList.contains("edit")) {
-    let editText =
-      e.target.parentElement.previousElementSibling.textContent.trim(); 
-    let valueToUpdate;
-
-    for (let i = 0; i < todoWrapper.children.length; i++) {
-      valueToUpdate = todoWrapper.children[i].firstElementChild.textContent;
-
-      if (valueToUpdate == editText) {
-        index = i;
-      }
+    let ElemToUpdate = e.target.parentElement.parentElement;
+    let ElemText = ElemToUpdate.firstElementChild.textContent;
+   for(let i =0; i < todoWrapper.children.length; i++){
+    if(todoWrapper.children[i] === ElemToUpdate){
+      index = i;
     }
-    inputElem.value = editText;
+    inputElem.value = ElemText;
+    inputElem.focus();
+   }
     inputElem.focus();
   }
 });
